@@ -21,25 +21,29 @@ class User(Base):
 class Post(Base):
     __tablename__ = 'post'
     id = Column(Integer, primary_key=True)
-    user_id = Column(String(50), ForeignKey('user.id'), nullable=False)
+    user_id = Column(Integer, ForeignKey('user.id'), nullable=False)
+    likes = Column(Integer, nullable=False)
+    n_veces_compartido = Column(Integer, nullable=False)
+    
 
 class Comment(Base):
     __tablename__ = 'comment'
     id = Column(Integer, primary_key=True)
-    user_id = Column(String(50), ForeignKey('user.id'), nullable=False)
-    post_id = Column(String(50), ForeignKey('post.id'), nullable=False)
+    user_id = Column(Integer, ForeignKey('user.id'), nullable=False)
+    post_id = Column(Integer, ForeignKey('post.id'), nullable=False)
+    likes = Column(Integer, nullable=False)
 
-class Like(Base):
-    __tablename__ = 'like'
+class post_guardados(Base):
+    __tablename__ = 'post_guardados'
     id = Column(Integer, primary_key=True)
-    user_id = Column(String(50), ForeignKey('user.id'), nullable=False)
-    post_id = Column(String(50), ForeignKey('post.id'), nullable=False)
+    user_id = Column(Integer, ForeignKey('user.id'), nullable=False)
+    post_id = Column(Integer, ForeignKey('post.id'), nullable=False)
 
 class Media(Base):
     __tablename__ = 'media'
     id = Column(Integer, primary_key=True)
-    user_id = Column(String(50), ForeignKey('user.id'), nullable=False)
     post_id = Column(String(50), ForeignKey('post.id'), nullable=False)
+    type = Column(String(50))
 
 
 
