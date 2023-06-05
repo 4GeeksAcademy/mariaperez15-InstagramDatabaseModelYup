@@ -22,7 +22,6 @@ class Post(Base):
     __tablename__ = 'post'
     id = Column(Integer, primary_key=True)
     user_id = Column(Integer, ForeignKey('user.id'), nullable=False)
-    likes = Column(Integer, nullable=False)
     n_veces_compartido = Column(Integer, nullable=False)
     
 
@@ -31,8 +30,6 @@ class Comment(Base):
     id = Column(Integer, primary_key=True)
     user_id = Column(Integer, ForeignKey('user.id'), nullable=False)
     post_id = Column(Integer, ForeignKey('post.id'), nullable=False)
-    likes = Column(Integer, nullable=False)
-
 class post_guardados(Base):
     __tablename__ = 'post_guardados'
     id = Column(Integer, primary_key=True)
