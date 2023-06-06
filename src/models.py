@@ -22,7 +22,6 @@ class Post(Base):
     __tablename__ = 'post'
     id = Column(Integer, primary_key=True)
     user_id = Column(Integer, ForeignKey('user.id'), nullable=False)
-    n_veces_compartido = Column(Integer, nullable=False)
     
 
 class Comment(Base):
@@ -30,11 +29,13 @@ class Comment(Base):
     id = Column(Integer, primary_key=True)
     user_id = Column(Integer, ForeignKey('user.id'), nullable=False)
     post_id = Column(Integer, ForeignKey('post.id'), nullable=False)
-class post_guardados(Base):
-    __tablename__ = 'post_guardados'
+
+
+class Follower(Base):
+    __tablename__ = 'Follower'
     id = Column(Integer, primary_key=True)
-    user_id = Column(Integer, ForeignKey('user.id'), nullable=False)
-    post_id = Column(Integer, ForeignKey('post.id'), nullable=False)
+    user_from_id = Column(Integer, ForeignKey('user.id'), nullable=False)
+    user_to_id = Column(Integer, ForeignKey('user.id'), nullable=False)
 
 class Media(Base):
     __tablename__ = 'media'
